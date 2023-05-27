@@ -15,26 +15,26 @@ public class CatalogController {
 
     private Catalog catalog;
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void addBook(Book book) {
+    @PostMapping(value = "/addBook")
+    public void addBook(@RequestParam(value = "book") Book book) {
 
         catalog.addBook(book);
     }
 
-    @GetMapping(path = "/{identifier}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Book getBook(String identifier) {
+    @GetMapping(value = "/getBook")
+    public Book getBook(@RequestParam(value = "identifier") String identifier) {
 
         return getBook(identifier);
     }
 
-    @PutMapping(path = "/{identifier}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void update(Book book) {
+    @PutMapping(value = "/getBook")
+    public void update(@RequestParam(value = "book") Book book) {
 
         catalog.update(book);
     }
 
-    @DeleteMapping(path = "/{identifier}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public void delete(String identifier) {
+    @DeleteMapping(value = "/delete")
+    public void delete(@RequestParam(value = "identifier") String identifier) {
 
         catalog.delete(identifier);
     }
