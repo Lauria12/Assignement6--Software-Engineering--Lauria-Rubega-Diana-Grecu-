@@ -12,24 +12,17 @@ public class InventoryController
 
     private Inventory inventory;
 
-    @PostMapping()
+    @PostMapping(value = "/addBook")
     public void addBook(@RequestParam(value = "book")Book book, @RequestParam(value = "quantity")int quantity) {
 
         inventory.addBook(book, quantity);
 
     }
 
-    @PutMapping()
+    @PutMapping(value = "/updateBookQuantity")
     public void updateBookQuantity(@RequestParam(value = "book")Book book, @RequestParam(value = "newquantity")int newQuantity) {
 
         inventory.updateBookQuantity(book, newQuantity);
-
-    }
-
-    @GetMapping
-    public int getBookQuantity(@RequestParam(value = "book")Book book) {
-
-        return getBookQuantity(book);
 
     }
 
