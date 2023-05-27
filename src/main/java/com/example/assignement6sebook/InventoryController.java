@@ -12,14 +12,14 @@ public class InventoryController
 
     private Inventory inventory;
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping()
     public void addBook(@RequestParam(value = "book")Book book, @RequestParam(value = "quantity")int quantity) {
 
         inventory.addBook(book, quantity);
 
     }
 
-    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping()
     public void updateBookQuantity(@RequestParam(value = "book")Book book, @RequestParam(value = "newquantity")int newQuantity) {
 
         inventory.updateBookQuantity(book, newQuantity);
