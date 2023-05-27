@@ -1,6 +1,8 @@
 package com.example.assignement6sebook;
 
 import com.example.assignement6sebook.Order.Order;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Date;
 
@@ -13,6 +15,7 @@ public class OrderController {
         order.setBookIdentifier(bookIdentifier);
     }
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public String getBookIdentifier() {
 
         return getBookIdentifier();
@@ -23,16 +26,19 @@ public class OrderController {
         order.setQuantity(quantity);
     }
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public int getQuantity() {
 
         return getQuantity();
     }
+
 
     public void setOrderDate(Date date) {
 
         order.setOrderDate(date);
     }
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public Date getOrderDate() {
 
         return getOrderDate();
