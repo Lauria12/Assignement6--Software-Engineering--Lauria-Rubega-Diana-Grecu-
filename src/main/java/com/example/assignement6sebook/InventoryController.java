@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/inventory")
 public class InventoryController
 {
-    private inventory;
+    private  inventory;
 
     public InventoryController()
     {
