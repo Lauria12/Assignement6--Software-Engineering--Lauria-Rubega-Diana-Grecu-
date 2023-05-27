@@ -7,11 +7,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BookInventory {
+public class Inventory {
     private Map<Book, Integer> bookCatalogue;
     private ObjectMapper objectMapper;
 
-    public BookInventory() {
+    public Inventory() {
         bookCatalogue = new HashMap<>();
         objectMapper = new ObjectMapper();
     }
@@ -26,6 +26,10 @@ public class BookInventory {
         } else {
             System.out.println("Book not found in inventory.");
         }
+    }
+    public int getBookQuantity(Book book) {
+
+        return bookCatalogue.getOrDefault(book, 0);
     }
 
     public String serializeInventoryToJson() {
@@ -45,8 +49,5 @@ public class BookInventory {
         }
     }
 
-    public int getBookQuantity(Book book) {
-        return bookCatalogue.getOrDefault(book, 0);
-    }
 
 }
