@@ -26,7 +26,7 @@ public class InventoryController
 
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping
     public int getBookQuantity(@RequestParam(value = "book")Book book) {
 
         return getBookQuantity(book);
