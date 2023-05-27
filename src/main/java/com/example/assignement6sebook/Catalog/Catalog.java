@@ -17,18 +17,22 @@ import java.util.Map;
         }
 
         public void addBook(Book book) {
+
             books.put(book.getIdentifier(), book);
         }
 
         public Book getBook(String identifier) {
+
             return books.get(identifier);
         }
 
         public void update(Book book) {
+
             books.put(book.getIdentifier(), book);
         }
 
         public void delete(String identifier) {
+
             books.remove(identifier);
         }
 
