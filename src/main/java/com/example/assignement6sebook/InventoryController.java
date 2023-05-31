@@ -13,17 +13,21 @@ public class InventoryController
     private Inventory inventory;
 
     @PostMapping(value = "/addBook")
-    public void addBook(@RequestParam(value = "book")Book book, @RequestParam(value = "quantity")int quantity) {
-
+    public void addBook(@RequestBody Book book, @RequestParam(value = "quantity") int quantity) {
         inventory.addBook(book, quantity);
-
     }
 
-    @PutMapping(value = "/updateBookQuantity")
-    public void updateBookQuantity(@RequestParam(value = "book")Book book, @RequestParam(value = "newquantity")int newQuantity) {
+   // @PutMapping(value = "/updateBookQuantity", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/{identifier}/quantity")
+    public void updateBookQuantity(@PathVariable("identifier") String identifier, @RequestParam(value = "newquantity") int newQuantity) {
+        Book book = inventory.getBookByIdentifier(identifier);
+        if (book != null) {
+            inventory.updateBookQuantity(book, newQuantity);
+        } else {
 
-        inventory.updateBookQuantity(book, newQuantity);
+            System.out.println("The book hasn't been found in inventory.");
 
+        }
     }
 
 }

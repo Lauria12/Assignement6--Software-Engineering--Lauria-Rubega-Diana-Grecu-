@@ -21,21 +21,19 @@ public class CatalogController {
         catalog.addBook(book);
     }
 
-    @GetMapping(value = "/getBook")
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/getBook")
     public Book getBook(@RequestParam(value = "identifier") String identifier) {
-
-        return getBook(identifier);
+        return catalog.getBook(identifier);
     }
 
-    @PutMapping(value = "/getBook")
-    public void update(@RequestParam(value = "book") Book book) {
-
+    @PutMapping(value = "/update/{identifier}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void update(@PathVariable("identifier") String identifier, @RequestBody Book book) {
         catalog.update(book);
     }
 
-    @DeleteMapping(value = "/delete")
-    public void delete(@RequestParam(value = "identifier") String identifier) {
-
+    @DeleteMapping(value = "/delete/{identifier}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public void delete(@PathVariable("identifier") String identifier) {
         catalog.delete(identifier);
     }
+
 }

@@ -32,6 +32,16 @@ public class Inventory {
         return bookCatalogue.getOrDefault(book, 0);
     }
 
+    public Book getBookByIdentifier(String identifier) {
+        for (Book book : bookCatalogue.keySet()) {
+            if (book.getIdentifier().equals(identifier)) {
+                return book;
+            }
+        }
+        return null; // Book not found
+    }
+
+
     public String serializeInventoryToJson() {
         try {
             return objectMapper.writeValueAsString(bookCatalogue);

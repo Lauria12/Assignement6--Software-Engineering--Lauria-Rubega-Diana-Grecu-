@@ -3,12 +3,17 @@ package com.example.assignement6sebook;
 import com.example.assignement6sebook.Order.Order;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 
-public class OrderController {
+@RestController
+@RequestMapping("/orders")
 
+
+public class OrderController {
     private Order order;
 
     public void setBookIdentifier(@RequestParam(value = "identifier") String bookIdentifier) {
@@ -16,33 +21,28 @@ public class OrderController {
         order.setBookIdentifier(bookIdentifier);
     }
 
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/getBookIdentifier")
     public String getBookIdentifier() {
 
         return getBookIdentifier();
     }
-
     public void setQuantity(@RequestParam(value = "quantity") int quantity) {
-
         order.setQuantity(quantity);
     }
 
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/getQuantity")
     public int getQuantity() {
-
-        return getQuantity();
+        return order.getQuantity();
     }
 
-
-    public void setOrderDate(@RequestParam(value = "date")Date date) {
-
+    public void setOrderDate(@RequestParam(value = "date") Date date) {
         order.setOrderDate(date);
     }
 
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/getOrderDate")
     public Date getOrderDate() {
-
-        return getOrderDate();
+        return order.getOrderDate();
     }
+
 
 }
