@@ -23,9 +23,9 @@ public class OrderController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/getBookIdentifier")
     public String getBookIdentifier() {
-
-        return getBookIdentifier();
+        return order.getBookIdentifier();
     }
+
     public void setQuantity(@RequestParam(value = "quantity") int quantity) {
         order.setQuantity(quantity);
     }
