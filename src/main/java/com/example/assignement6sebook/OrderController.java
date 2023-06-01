@@ -2,10 +2,7 @@ package com.example.assignement6sebook;
 
 import com.example.assignement6sebook.Order.Order;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
@@ -16,6 +13,12 @@ import java.util.Date;
 public class OrderController {
     private Order order;
 
+    @PostMapping(value = "/create")
+    public void createOrder(@RequestParam(value = "identifier") String bookIdentifier,
+                            @RequestParam(value = "quantity") int quantity,
+                            @RequestParam(value = "date") Date date) {
+        order.createOrder(bookIdentifier, quantity, date);
+    }
     public void setBookIdentifier(@RequestParam(value = "identifier") String bookIdentifier) {
 
         order.setBookIdentifier(bookIdentifier);

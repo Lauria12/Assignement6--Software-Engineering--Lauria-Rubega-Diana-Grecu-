@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Inventory {
-    private Map<Book, Integer> bookCatalogue;
+    private Map<String, Integer> bookCatalogue;
     private ObjectMapper objectMapper;
 
     public Inventory() {
@@ -16,31 +16,22 @@ public class Inventory {
         objectMapper = new ObjectMapper();
     }
 
-    public void addBook(Book book, int quantity) {
-        bookCatalogue.put(book, quantity);
+    public void addBook(String identifier, String title, String author, int year, int quantity) {
+        Book book = new Book(identifier, title, author, year);
+        bookCatalogue.put(book.getIdentifier(), quantity);
     }
 
-    public void updateBookQuantity(Book book, int newQuantity) {
-        if (bookCatalogue.containsKey(book)) {
-            bookCatalogue.put(book, newQuantity);
+    public void updateBookQuantity(String identifier, int newQuantity) {
+        if (bookCatalogue.containsKey(identifier)) {
+            bookCatalogue.put(identifier, newQuantity);
         } else {
             System.out.println("Book not found in inventory.");
         }
     }
-    public int getBookQuantity(Book book) {
+    public int getBookQuantity(String identifier) {
 
-        return bookCatalogue.getOrDefault(book, 0);
+        return bookCatalogue.getOrDefault(identifier, 0);
     }
-
-    public Book getBookByIdentifier(String identifier) {
-        for (Book book : bookCatalogue.keySet()) {
-            if (book.getIdentifier().equals(identifier)) {
-                return book;
-            }
-        }
-        return null; // Book not found
-    }
-
 
     public String serializeInventoryToJson() {
         try {
@@ -53,11 +44,9 @@ public class Inventory {
 
     public void deserializeInventoryFromJson(String json) {
         try {
-            bookCatalogue = objectMapper.readValue(json, objectMapper.getTypeFactory().constructMapType(HashMap.class, Book.class, Integer.class));
+            bookCatalogue = objectMapper.readValue(json, objectMapper.getTypeFactory().constructMapType(HashMap.class, String.class, Integer.class));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
     }
-
-
 }

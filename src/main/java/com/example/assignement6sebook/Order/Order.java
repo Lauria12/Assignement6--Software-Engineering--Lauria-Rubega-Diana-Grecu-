@@ -11,13 +11,15 @@ public class Order {
     private Date date;
     private ObjectMapper objectMapper; // Jackson ObjectMapper
 
-    public Order(String bookIdentifier, int quantity, Date date) {
+    public Order() {
+        objectMapper = new ObjectMapper();
+    }
+
+    public void createOrder(String bookIdentifier, int quantity, Date date) {
         this.bookIdentifier = bookIdentifier;
         this.quantity = quantity;
         this.date = date;
-        this.objectMapper = new ObjectMapper();
     }
-
     public void setBookIdentifier(String bookIdentifier) {
 
         this.bookIdentifier = bookIdentifier;
@@ -67,20 +69,7 @@ public class Order {
         }
     }
 
-    public static void main(String[] args) {
-        // Create an Order instance
-        Order order = new Order("1", 1, new Date());
-
-        // Serialize the order to JSON
-        String json = order.serializeOrderToJson();
-        System.out.println(json);
-
-        // Deserialize the order from JSON
-        Order deserializedOrder = Order.deserializeOrderFromJson(json);
-        System.out.println(deserializedOrder.getBookIdentifier());
-        System.out.println(deserializedOrder.getQuantity());
-        System.out.println(deserializedOrder.getOrderDate());
-
-
+    public String toString() {
+        return "Order: " + bookIdentifier + ", " + quantity + ", " + date;
     }
 }
