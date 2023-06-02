@@ -1,6 +1,5 @@
 package com.example.assignement6sebook.Inventory;
 
-import com.example.assignement6sebook.Inventory.Inventory;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.*;
@@ -9,12 +8,12 @@ import org.springframework.web.client.RestTemplate;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class InventoryTestAPI {
+public class TestInventoryAPI {
 
     private RestTemplate restTemplate;
     private String baseUrl;
 
-    //There is no real need to test getters and setters, I just did it to have a full coverage test
+
 
     @Before
     public void setUp() {
@@ -33,7 +32,7 @@ public class InventoryTestAPI {
         ResponseEntity<Void> response = restTemplate.postForEntity(url, request, Void.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        // Add additional assertions based on your API's expected behavior
+
     }
 
     @Test
@@ -45,6 +44,6 @@ public class InventoryTestAPI {
         ResponseEntity<Void> response = restTemplate.exchange(url, HttpMethod.PUT, null, Void.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        // Add additional assertions based on your API's expected behavior
+
     }
 }

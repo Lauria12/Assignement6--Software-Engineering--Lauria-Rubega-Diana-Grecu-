@@ -10,12 +10,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-public class CatalogTestAPI {
+public class TestCatalogAPI {
     private Catalog catalog;
     private RestTemplate restTemplate;
     private final String baseUrl = "http://localhost:8080/catalog";
 
-    //There is no real need to test getters and setters, I just did it to have a full coverage test
 
     @Before
     public void setUp() {
@@ -33,7 +32,7 @@ public class CatalogTestAPI {
 
         ResponseEntity<Void> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity, Void.class);
 
-        // Perform assertions on the response
+
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
 
     }
@@ -44,7 +43,7 @@ public class CatalogTestAPI {
 
         ResponseEntity<Book> responseEntity = restTemplate.getForEntity(url, Book.class);
 
-        // Perform assertions on the response
+
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertNotNull(responseEntity.getBody());
 
@@ -60,7 +59,7 @@ public class CatalogTestAPI {
 
         ResponseEntity<Void> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Void.class);
 
-        // Perform assertions on the response
+
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
 
     }
@@ -71,7 +70,7 @@ public class CatalogTestAPI {
 
         ResponseEntity<Void> responseEntity = restTemplate.exchange(url, HttpMethod.DELETE, null, Void.class);
 
-        // Perform assertions on the response
+
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
 
     }

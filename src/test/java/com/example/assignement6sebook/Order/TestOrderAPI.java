@@ -1,6 +1,5 @@
 package com.example.assignement6sebook.Order;
 
-import com.example.assignement6sebook.Order.Order;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.*;
@@ -10,12 +9,11 @@ import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 
-public class OrderTestAPI {
+public class TestOrderAPI {
 
     private RestTemplate restTemplate;
     private String baseUrl;
 
-    //There is no real need to test getters and setters, I just did it to have a full coverage test
 
     @Before
     public void setUp() {

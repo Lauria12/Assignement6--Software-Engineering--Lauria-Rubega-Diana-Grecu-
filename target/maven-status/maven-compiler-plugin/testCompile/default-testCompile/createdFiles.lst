@@ -1,4 +1,4 @@
-com\example\assignement6sebook\Order\OrderTestAPI.class
-com\example\assignement6sebook\Inventory\InventoryTestAPI.class
+com\example\assignement6sebook\Catalog\TestCatalogAPI.class
 com\example\assignement6sebook\Assignement6SeBookApplicationTests.class
-com\example\assignement6sebook\Catalog\CatalogTestAPI.class
+com\example\assignement6sebook\Inventory\TestInventoryAPI.class
+com\example\assignement6sebook\Order\TestOrderAPI.class
