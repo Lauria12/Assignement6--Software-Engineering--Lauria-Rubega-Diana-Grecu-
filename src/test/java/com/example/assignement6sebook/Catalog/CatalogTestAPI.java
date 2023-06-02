@@ -35,7 +35,7 @@ public class CatalogTestAPI {
 
         // Perform assertions on the response
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        // Add additional assertions based on your API's expected behavior
+
     }
 
     @Test
@@ -47,7 +47,7 @@ public class CatalogTestAPI {
         // Perform assertions on the response
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertNotNull(responseEntity.getBody());
-        // Add additional assertions based on your API's expected behavior
+
     }
 
     @Test
@@ -62,7 +62,7 @@ public class CatalogTestAPI {
 
         // Perform assertions on the response
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        // Add additional assertions based on your API's expected behavior
+
     }
 
     @Test
@@ -73,6 +73,6 @@ public class CatalogTestAPI {
 
         // Perform assertions on the response
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        // Add additional assertions based on your API's expected behavior
+
     }
 }
